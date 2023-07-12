@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { BillboardClient } from "./components/client";
 import { BillboardColumn } from "./components/columns";
 
-const BillboardPage = async ({ params }: { params: { storeId: string } }) => {
+const BillboardsPage = async ({ params }: { params: { storeId: string } }) => {
   const billboards = await prismadb.billboard.findMany({
     where: {
       storeId: params.storeId,
@@ -29,4 +29,4 @@ const BillboardPage = async ({ params }: { params: { storeId: string } }) => {
   );
 };
 
-export default BillboardPage;
+export default BillboardsPage;

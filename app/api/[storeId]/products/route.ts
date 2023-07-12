@@ -50,10 +50,6 @@ export async function POST(
       return new NextResponse("Size ID is required", { status: 400 });
     }
 
-    if (!price) {
-      return new NextResponse("Price is required", { status: 400 });
-    }
-
     if (!params.storeId) {
       return new NextResponse("Store ID is required", { status: 400 });
     }
@@ -80,9 +76,7 @@ export async function POST(
         sizeId,
         images: {
           createMany: {
-            data: {
-              ...images.map((image: { url: string }) => image),
-            },
+            data: [...images.map((image: { url: string }) => image)],
           },
         },
         storeId: params.storeId,

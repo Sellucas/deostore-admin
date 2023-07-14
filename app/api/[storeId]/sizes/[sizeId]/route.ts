@@ -4,17 +4,17 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   req: Request,
-  { params }: { params: { sizeID: string } }
+  { params }: { params: { sizeId: string } }
 ) {
   try {
     const { userId } = auth();
 
-    if (!params.sizeID) {
+    if (!params.sizeId) {
       return new NextResponse("Size ID is required", { status: 400 });
     }
 
     const size = await prismadb.size.findUnique({
-      where: { id: params.sizeID },
+      where: { id: params.sizeId },
     });
 
     return NextResponse.json(size);

@@ -1,20 +1,19 @@
-import prismadb from "@/lib/prismadb";
-import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs";
+
+import prismadb from "@/lib/prismadb";
 
 export async function GET(
   req: Request,
-  { params }: { params: { billboardID: string } }
+  { params }: { params: { billboardId: string } }
 ) {
   try {
-    const { userId } = auth();
-
-    if (!params.billboardID) {
+    if (!params.billboardId) {
       return new NextResponse("Billboard ID is required", { status: 400 });
     }
 
     const billboard = await prismadb.billboard.findUnique({
-      where: { id: params.billboardID },
+      where: { id: params.billboardId },
     });
 
     return NextResponse.json(billboard);
@@ -75,7 +74,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { billboardId: string, storeId: string } }
+  { params }: { params: { billboardId: string; storeId: string } }
 ) {
   try {
     const { userId } = auth();

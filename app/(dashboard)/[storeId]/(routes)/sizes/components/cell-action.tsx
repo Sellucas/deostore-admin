@@ -31,7 +31,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success("Size ID copied to clipboard");
+    toast.success("Tamanho ID copiado");
   };
 
   const onDelete = async () => {
@@ -39,9 +39,11 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
       router.refresh();
-      toast.success("Size deleted");
+      toast.success("Tamanho excuído");
     } catch (error) {
-      toast.error("Make sure you remove all products using this size first");
+      toast.error(
+        "Certifique-se de remover todos os produtos que utilizam este tamanho"
+      );
     } finally {
       setLoading(false);
       setOpen(false);
@@ -64,20 +66,20 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Ações</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 w-4 h-4" />
-            Copy ID
+            Copiar ID
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => router.push(`/${params.storeId}/sizes/${data.id}`)}
           >
             <Edit className="mr-2 w-4 h-4" />
-            Update
+            Atualizar
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 w-4 h-4" />
-            Delete
+            Excluír
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

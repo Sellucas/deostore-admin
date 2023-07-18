@@ -44,10 +44,10 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit color" : "Create color";
-  const description = initialData ? "Edit a color" : "Add a new color";
-  const toastMessage = initialData ? "Color updated" : "Color created";
-  const action = initialData ? "Save changes" : "Create";
+  const title = initialData ? "Editar cor" : "Criar cor";
+  const description = initialData ? "Editar color" : "Criar nova cor";
+  const toastMessage = initialData ? "Cor atualizada" : "Cor criada";
+  const action = initialData ? "Salvar alterações" : "Criar";
 
   const form = useForm<ColorFormValues>({
     resolver: zodResolver(formSchema),
@@ -73,7 +73,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       toast.success(toastMessage);
       router.push(`/${params.storeId}/colors`);
     } catch (error) {
-      toast.error("Smothing went wrong");
+      toast.error("Ocorreu um problema");
     } finally {
       setLoading(false);
     }
@@ -85,9 +85,11 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
       router.refresh();
       router.push(`/${params.storeId}/colors`);
-      toast.success("Color deleted");
+      toast.success("Cor excluída");
     } catch (error) {
-      toast.error("Make sure you delete all products using this color first");
+      toast.error(
+        "Certifique-se de excluir todos os produtos que utilizam esta cor"
+      );
     } finally {
       setLoading(false);
       setOpen(false);
@@ -127,11 +129,11 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Color name"
+                      placeholder="Cor nome"
                       {...field}
                     />
                   </FormControl>
@@ -144,12 +146,12 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>Valor</FormLabel>
                   <FormControl>
                     <div className="flex items-center gap-x-4">
                       <Input
                         disabled={loading}
-                        placeholder="Color value"
+                        placeholder="Cor valor (hex)"
                         {...field}
                       />
                       <div

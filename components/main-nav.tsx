@@ -25,32 +25,32 @@ export function MainNav({
     },
     {
       href: `/${params.storeId}/categories`,
-      label: "Categories",
+      label: "Categorias",
       active: pathName === `/${params.storeId}/categories`,
     },
     {
       href: `/${params.storeId}/sizes`,
-      label: "Sizes",
+      label: "Tamanhos",
       active: pathName === `/${params.storeId}/sizes`,
     },
     {
       href: `/${params.storeId}/colors`,
-      label: "Colors",
+      label: "Cores",
       active: pathName === `/${params.storeId}/colors`,
     },
     {
       href: `/${params.storeId}/products`,
-      label: "Products",
+      label: "Produtos",
       active: pathName === `/${params.storeId}/products`,
     },
     {
       href: `/${params.storeId}/orders`,
-      label: "Orders",
+      label: "Pedidos",
       active: pathName === `/${params.storeId}/orders`,
     },
     {
       href: `/${params.storeId}/settings`,
-      label: "Settings",
+      label: "Configurações",
       active: pathName === `/${params.storeId}/settings`,
     },
   ];

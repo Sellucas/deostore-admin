@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import ImageUpload from "@/components/ui/image-upload";
 
 interface SizeFormProps {
   initialData: Size | null;
@@ -43,10 +42,10 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit size" : "Create size";
-  const description = initialData ? "Edit a size" : "Add a new size";
-  const toastMessage = initialData ? "Size updated" : "Size created";
-  const action = initialData ? "Save changes" : "Create";
+  const title = initialData ? "Editar tamanho" : "Criar tamanho";
+  const description = initialData ? "Editar tamanho" : "Criar novo tamanho";
+  const toastMessage = initialData ? "Tamanho atualizado" : "Tamanho criado";
+  const action = initialData ? "Salvar alterações" : "Criar";
 
   const form = useForm<SizeFormValues>({
     resolver: zodResolver(formSchema),
@@ -72,7 +71,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       toast.success(toastMessage);
       router.push(`/${params.storeId}/sizes`);
     } catch (error) {
-      toast.error("Smothing went wrong");
+      toast.error("Ocorreu um problema");
     } finally {
       setLoading(false);
     }
@@ -84,9 +83,11 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`);
       router.refresh();
       router.push(`/${params.storeId}/sizes`);
-      toast.success("Size deleted");
+      toast.success("Tamanho excluído");
     } catch (error) {
-      toast.error("Make sure you delete all products using this size first");
+      toast.error(
+        "Certifique-se de excluir todos os produtos que utilizam este tamanho"
+      );
     } finally {
       setLoading(false);
       setOpen(false);
@@ -126,11 +127,11 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Size name"
+                      placeholder="Tamanho nome"
                       {...field}
                     />
                   </FormControl>
@@ -143,11 +144,11 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>Valor</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Size value"
+                      placeholder="Tamanho valor"
                       {...field}
                     />
                   </FormControl>

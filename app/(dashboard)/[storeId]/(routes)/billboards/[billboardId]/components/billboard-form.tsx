@@ -45,10 +45,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit billboard" : "Create billboard";
-  const description = initialData ? "Edit a billboard" : "Add a new billboard";
-  const toastMessage = initialData ? "Billboard updated" : "Billboard created";
-  const action = initialData ? "Save changes" : "Create";
+  const title = initialData ? "Editar billboard" : "Criar billboard";
+  const description = initialData ? "Editar um billboard" : "Criar novo billboard";
+  const toastMessage = initialData ? "Billboard atualizado" : "Billboard criado";
+  const action = initialData ? "Salvar alterações" : "Criar";
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),
@@ -74,7 +74,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       toast.success(toastMessage);
       router.push(`/${params.storeId}/billboards`);
     } catch (error) {
-      toast.error("Smothing went wrong");
+      toast.error("Ocorreu um problema");
     } finally {
       setLoading(false);
     }
@@ -88,10 +88,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       );
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
-      toast.success("Billboard deleted");
+      toast.success("Billboard excluído");
     } catch (error) {
       toast.error(
-        "Make sure you delete all categories using this billboard first"
+        "Certifique-se de excluir todas as categorias que utilizam este Billboard"
       );
     } finally {
       setLoading(false);
@@ -131,7 +131,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             name="imageUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Background Image</FormLabel>
+                <FormLabel>Imagem de Fundo</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value ? [field.value] : []}
@@ -151,11 +151,11 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>Título</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Billboard label"
+                      placeholder="Billboard Título"
                       {...field}
                     />
                   </FormControl>

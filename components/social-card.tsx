@@ -17,7 +17,7 @@ import {
 
 export function SocialCard() {
   return (
-    <div className="fixed right-0 bottom-0 z-40">
+    <div className="fixed right-0 bottom-0 bg-inherit z-40">
       <HoverCard>
         <HoverCardTrigger asChild>
           <Button variant="link">

@@ -33,13 +33,12 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
         </div>
         <Separator />
         <div className="grid gap-4 grid-cols-3">
-          {/* Improve cards */}
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-base font-semibold">
                 Receita Total
               </CardTitle>
-              <DollarSign className="w-6 h-6 text-muted-foreground" />
+              <DollarSign className="w-8 h-8 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">VENDAS</div>
@@ -51,7 +50,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-base font-semibold">Vendas</CardTitle>
-              <BadgePercent className="w-6 h-6 text-muted-foreground" />
+              <BadgePercent className="w-8 h-8 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">TRANSAÇÕES</div>
@@ -63,7 +62,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
               <CardTitle className="text-base font-semibold">
                 Produtos em Estoque
               </CardTitle>
-              <Package className="w-6 h-6 text-muted-foreground" />
+              <Package className="w-8 h-8 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">INVENTÁRIO</div>

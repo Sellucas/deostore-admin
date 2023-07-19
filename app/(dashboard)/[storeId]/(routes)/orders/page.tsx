@@ -16,7 +16,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
           product: true,
         },
       },
-    },
+    },  
     orderBy: {
       createdAt: "desc",
     },

@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ModalProvider } from "@/providers/modal-provider";
 import { ToasterProvider } from "@/providers/toast-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { SocialCard } from "@/components/social-card";
 
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
       <html lang="pt-br">
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <SocialCard />
             <ToasterProvider />
             <ModalProvider />
             {children}

@@ -23,6 +23,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface ColorFormProps {
   initialData: Color | null;
@@ -96,6 +103,17 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
     }
   };
 
+  const colors = [
+    "#000000",
+    "#FFFFFF",
+    "#0000ff",
+    "#008000",
+    "#ffff00",
+    "#800080",
+    "#ff0000",
+    "#ce7e00",
+  ];
+
   return (
     <>
       <AlertModal
@@ -146,20 +164,35 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Valor</FormLabel>
-                  <FormControl>
-                    <div className="flex items-center gap-x-4">
-                      <Input
-                        disabled={loading}
-                        placeholder="Cor valor (hex)"
-                        {...field}
-                      />
-                      <div
-                        className="border p-4 rounded-full"
-                        style={{ backgroundColor: field.value }}
-                      />
-                    </div>
-                  </FormControl>
+                  <FormLabel>Valor Hex</FormLabel>
+                  <Select
+                    disabled={loading}
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          defaultValue={field.value}
+                          placeholder="Select a billboard"
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {colors.map((color) => (
+                        <SelectItem key={color} value={color}>
+                          <div className="flex flex-row items-center justify-start gap-4">
+                            <div
+                              className="p-4 rounded-full"
+                              style={{ backgroundColor: color }}
+                            />
+                            <p>{color}</p>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}

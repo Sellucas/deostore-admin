@@ -88,7 +88,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       <div className="flex items-center justify-between">
         <Heading
           title="Configurações"
-          description="Gerenciar preferências da loja"
+          description="Gerenciar preferências para sua loja."
         />
         <Button
           disabled={loading}

@@ -41,9 +41,12 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
               <DollarSign className="w-8 h-8 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-xs text-muted-foreground">VENDAS</div>
-              <div className="text-3xl font-bold">
-                {formatter.format(totalRevenue)}
+              <div className="text-xs text-muted-foreground">FATURAMENTO</div>
+              <div className="flex flex-row items-center gap-2">
+                <h2 className="text-3xl font-bold">
+                  {formatter.format(totalRevenue)}
+                </h2>
+                <span className="bg-green-700 p-1 rounded-md">+49%</span>
               </div>
             </CardContent>
           </Card>
@@ -54,7 +57,10 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">TRANSAÇÕES</div>
-              <div className="text-3xl font-bold">+{salesCount}</div>
+              <div className="flex flex-row items-center gap-2">
+                <h2 className="text-3xl font-bold">{salesCount}</h2>
+                <span className="bg-yellow-700 p-1 rounded-md">-14%</span>
+              </div>
             </CardContent>
           </Card>
           <Card>

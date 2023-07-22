@@ -2,13 +2,13 @@
 
 img
 
-## 💾 Sobre
+## Sobre
 
 **DeoStore** é um projeto de E-Commerce full stack que combina uma plataforma de E-Commerce com um Dashboard & CMS versátil que permite aos administradores gerenciar catálogos de produtos, categorias, medidas, cores, billboards, pedidos e outros conteúdos de forma fácil e intuitiva. A integração com o Stripe garante um processamento de pagamentos seguro e confiável para os clientes.
 
 O deployment foi realizado com o Vercel e está disponível [aqui](https://deostore-admin.vercel.app).
 
-## 🚀 Tecnologias
+## Tecnologias
 
 **DeoStore** foi desenvolvido utilizando as seguintes tecnologias:
 
@@ -28,7 +28,7 @@ O deployment foi realizado com o Vercel e está disponível [aqui](https://deost
 - React-Hot-Toast
 - Lucide-Icons
 
-## ⚙ Recursos
+## Recursos
 
 - O Admin Dashboard serve como CMS, Admin e API, tudo em um só lugar.
 - Controle de múltiplos fornecedores / lojas através deste único CMS. Por exemplo, você pode ter uma "Loja de Roupas", uma "Loja de Calçados" e uma "Loja de Jóias", e o CMS irá gerar rotas de API para cada uma delas individualmente.

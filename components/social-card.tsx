@@ -20,7 +20,7 @@ export function SocialCard() {
     <div className="fixed right-0 bottom-0 bg-inherit z-40">
       <HoverCard>
         <HoverCardTrigger asChild>
-          <Button variant="link">
+          <Button variant="ghost" size={"sm"}>
             <BellDot size={20} className="mr-1" />
             Sellucas
           </Button>

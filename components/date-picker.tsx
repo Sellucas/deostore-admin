@@ -28,7 +28,8 @@ export function DatePicker({
         <PopoverTrigger asChild>
           <Button
             id="date"
-            variant={"outline"}
+            variant={"secondary"}
+            size={"lg"}
             className={cn(
               "w-[300px] justify-start text-left font-normal",
               !date && "text-muted-foreground"

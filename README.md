@@ -8,6 +8,8 @@ img
 
 O deployment foi realizado com o Vercel e está disponível [aqui](https://deostore-admin.vercel.app).
 
+Para simulação de pagamento acesse [Stripe: como usar cartões de teste](https://stripe.com/docs/testing).
+
 ## Tecnologias
 
 **DeoStore** foi desenvolvido utilizando as seguintes tecnologias:

@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { ptBR } from "@clerk/localizations";
+
 import { ModalProvider } from "@/providers/modal-provider";
 import { ToasterProvider } from "@/providers/toast-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -21,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={ptBR}>
       <html lang="pt-br">
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

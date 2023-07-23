@@ -46,11 +46,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
                 <h2 className="text-3xl font-bold">
                   {formatter.format(totalRevenue)}
                 </h2>
-                {totalRevenue != 0 ? (
-                  <span className="bg-green-700 p-1 rounded-md text-sm">+49%</span>
-                ) : (
-                  null
-                )}
+                {totalRevenue != 0 && <span className="bg-green-700 p-1 rounded-md text-sm">+49%</span>}
               </div>
             </CardContent>
           </Card>
@@ -63,11 +59,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
               <div className="text-xs text-muted-foreground">TRANSAÇÕES</div>
               <div className="flex flex-row items-center gap-2">
                 <h2 className="text-3xl font-bold">{salesCount}</h2>
-                {totalRevenue != 0 ? (
-                  <span className="bg-yellow-700 p-1 rounded-md text-sm">-14%</span>
-                ) : (
-                  null
-                )}
+                {salesCount != 0 && <span className="bg-yellow-700 p-1 rounded-md text-sm">-14%</span>}
               </div>
             </CardContent>
           </Card>

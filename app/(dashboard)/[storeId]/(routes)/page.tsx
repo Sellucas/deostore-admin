@@ -1,4 +1,4 @@
-import { BadgePercent, DollarSign, Package } from "lucide-react";
+import { BadgePercent, DollarSign, FolderOpen, Package } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
@@ -6,10 +6,11 @@ import { Separator } from "@/components/ui/separator";
 import { formatter } from "@/lib/utils";
 import { getTotalRevenue } from "@/actions/get-total-revenue";
 import { getSalesCount } from "@/actions/get-sales-count";
-import { getStockCount } from "@/actions/fet-stock-count";
+import { getStockCount } from "@/actions/get-stock-count";
 import { getGraphRevenue } from "@/actions/get-graph-revenue";
 import { Overview } from "@/components/overview";
 import { DatePicker } from "@/components/date-picker";
+import { getArchived } from "@/actions/get-archived";
 
 interface DashboardPageProps {
   params: { storeId: string };
@@ -20,6 +21,7 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
   const salesCount = await getSalesCount(params.storeId);
   const stockCount = await getStockCount(params.storeId);
   const graphRevenue = await getGraphRevenue(params.storeId);
+  const archivedCount = await getArchived(params.storeId);
 
   return (
     <div className="flex-col">
@@ -32,47 +34,61 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
           <DatePicker />
         </div>
         <Separator />
-        <div className="grid gap-4 grid-cols-3">
+        <div className="grid gap-4 grid-cols-4">
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-col items-center justify-between gap-2">
+              <div className="bg-green-600 p-4 rounded-full">
+                <DollarSign className="w-8 h-8 text-white" />
+              </div>
               <CardTitle className="text-base font-semibold">
                 Receita Total
               </CardTitle>
-              <DollarSign className="w-8 h-8 text-muted-foreground" />
+              {totalRevenue != 0 && <div className="text-xs text-muted-foreground">+49% FATURAMENTO</div>}
             </CardHeader>
-            <CardContent>
-              <div className="text-xs text-muted-foreground">FATURAMENTO</div>
-              <div className="flex flex-row items-center gap-2">
-                <h2 className="text-3xl font-bold">
-                  {formatter.format(totalRevenue)}
-                </h2>
-                {totalRevenue != 0 && <span className="bg-green-700 p-1 rounded-md text-sm">+49%</span>}
-              </div>
+            <CardContent className="flex flex-col items-center justify-between">
+              <div className="text-3xl font-bold">{formatter.format(totalRevenue)}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-base font-semibold">Vendas</CardTitle>
-              <BadgePercent className="w-8 h-8 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-xs text-muted-foreground">TRANSAÇÕES</div>
-              <div className="flex flex-row items-center gap-2">
-                <h2 className="text-3xl font-bold">{salesCount}</h2>
-                {salesCount != 0 && <span className="bg-yellow-700 p-1 rounded-md text-sm">-14%</span>}
+            <CardHeader className="flex flex-col items-center justify-between gap-2">
+              <div className="bg-blue-600 p-4 rounded-full">
+                <BadgePercent className="w-8 h-8 text-white" />
               </div>
+              <CardTitle className="text-base font-semibold">
+                Vendas
+              </CardTitle>
+              {salesCount != 0 && <div className="text-xs text-muted-foreground">+37% TRANSAÇÕES</div>}
+            </CardHeader>
+            <CardContent className="flex flex-col items-center justify-between">
+              <div className="text-3xl font-bold">{salesCount}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-col items-center justify-between gap-2">
+              <div className="bg-orange-600 p-4 rounded-full">
+                <Package className="w-8 h-8 text-white" />
+              </div>
               <CardTitle className="text-base font-semibold">
                 Produtos em Estoque
               </CardTitle>
-              <Package className="w-8 h-8 text-muted-foreground" />
+              {stockCount != 0 && <div className="text-xs text-muted-foreground">+25% NOVOS PRODUTOS</div>}
             </CardHeader>
-            <CardContent>
-              <div className="text-xs text-muted-foreground">INVENTÁRIO</div>
+            <CardContent className="flex flex-col items-center justify-between">
               <div className="text-3xl font-bold">{stockCount}</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-col items-center justify-between gap-2">
+              <div className="bg-yellow-600 p-4 rounded-full">
+                <FolderOpen className="w-8 h-8 text-white" />
+              </div>
+              <CardTitle className="text-base font-semibold">
+                Produtos Arquivados
+              </CardTitle>
+              <div className="text-xs text-muted-foreground">PRODUTOS FORA DE ESTOQUE</div>
+            </CardHeader>
+            <CardContent className="flex flex-col items-center justify-between">
+              <div className="text-3xl font-bold">{archivedCount}</div>
             </CardContent>
           </Card>
         </div>

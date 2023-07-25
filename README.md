@@ -1,6 +1,6 @@
 # DeoStore ADMIN DASHBOARD
 
-img
+![deodash](https://github.com/Sellucas/deostore-admin/assets/75432770/682419fa-526e-4a7f-a3b7-140f51f594a0)
 
 ## Sobre
 
